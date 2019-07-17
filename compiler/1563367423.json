@@ -1,0 +1,241 @@
+{
+    "modifications":[{
+        "code":"ASM",
+        "compability":"asm",
+        "language":"asm",
+        "icon":"devicon-devicon-plain",
+        "display":"ASM (nasm)",
+        "method":"add"
+    },{
+        "code":"AWK",
+        "compability":"ask",
+        "language":"awk",
+        "icon":"devicon-devicon-plain",
+        "display":"AWK (awk)",
+        "method":"add"
+    },{
+        "code":"BASH",
+        "compability":"shellscript",
+        "language":"shellscript",
+        "icon":"devicon-devicon-plain",
+        "display":"Bash (bash)",
+        "method":"add"
+    },{
+        "code":"CAT",
+        "compability":"plaintext",
+        "language":"plaintext",
+        "icon":"devicon-devicon-plain",
+        "display":"Plaintext (cat)",
+        "method":"add"
+    },{
+        "code":"CLANG",
+        "compability":"c",
+        "language":"c",
+        "icon":"devicon-c-plain",
+        "display":"C (clang)",
+        "method":"add"
+    },{
+        "code":"CLANGXX",
+        "compability":"c",
+        "language":"cpp",
+        "icon":"devicon-cplusplus-plain",
+        "display":"C++ (clang++)",
+        "method":"add"
+    },{
+        "code":"CLISP",
+        "compability":"lisp",
+        "language":"lisp",
+        "icon":"devicon-devicon-plain",
+        "display":"Common Lisp (clisp)",
+        "method":"add"
+    },{
+        "code":"DMD",
+        "compability":"d",
+        "language":"d",
+        "icon":"devicon-devicon-plain",
+        "display":"D (dmd)",
+        "method":"add"
+    },{
+        "code":"FORTRAN",
+        "compability":"fortran",
+        "language":"fortran",
+        "icon":"devicon-devicon-plain",
+        "display":"Fortran95 (gfortran)",
+        "method":"add"
+    },{
+        "code":"FPC",
+        "compability":"pascal",
+        "language":"pascal",
+        "icon":"devicon-devicon-plain",
+        "display":"Pascal (fpc)",
+        "method":"add"
+    },{
+        "code":"GCC",
+        "compability":"c",
+        "language":"c",
+        "icon":"devicon-c-plain",
+        "display":"C (gcc)",
+        "method":"add"
+    },{
+        "code":"GHC",
+        "compability":"haskell",
+        "language":"haskell",
+        "icon":"devicon-devicon-plain",
+        "display":"Haskell (ghc)",
+        "method":"add"
+    },{
+        "code":"GO",
+        "compability":"go",
+        "language":"go",
+        "icon":"devicon-go-plain",
+        "display":"Go (go)",
+        "method":"add"
+    },{
+        "code":"GXX",
+        "compability":"c",
+        "language":"cpp",
+        "icon":"devicon-cplusplus-plain",
+        "display":"C++ (g++)",
+        "method":"add"
+    },{
+        "code":"JAVAC",
+        "compability":"java",
+        "language":"java",
+        "icon":"devicon-java-plain",
+        "display":"Java (openjdk)",
+        "method":"add"
+    },{
+        "code":"KOTLIN",
+        "compability":"java",
+        "language":"kotlin",
+        "icon":"devicon-devicon-plain",
+        "display":"Kotlin (kotlinc)",
+        "method":"add"
+    },{
+        "code":"LUA",
+        "compability":"lua",
+        "language":"lua",
+        "icon":"devicon-devicon-plain",
+        "display":"Lua (lua)",
+        "method":"add"
+    },{
+        "code":"LUAJIT",
+        "compability":"lua",
+        "language":"lua",
+        "icon":"devicon-devicon-plain",
+        "display":"Lua (luajit)",
+        "method":"add"
+    },{
+        "code":"MCS",
+        "compability":"c",
+        "language":"csharp",
+        "icon":"devicon-csharp-plain",
+        "display":"C# (mcs)",
+        "method":"add"
+    },{
+        "code":"NODE",
+        "compability":"javascript",
+        "language":"javascript",
+        "icon":"devicon-nodejs-plain",
+        "display":"JavaScript (node)",
+        "method":"add"
+    },{
+        "code":"NO_COMPILER",
+        "compability":"plaintext",
+        "language":"plaintext",
+        "icon":"devicon-devicon-plain",
+        "display":"无",
+        "method":"add"
+    },{
+        "code":"OBJC",
+        "compability":"c",
+        "language":"objective-c",
+        "icon":"devicon-c-plain",
+        "display":"Objective-C (gcc)",
+        "method":"add"
+    },{
+        "code":"OCAMLC",
+        "compability":"caml",
+        "language":"caml",
+        "icon":"devicon-devicon-plain",
+        "display":"OCaml (ocamlc)",
+        "method":"add"
+    },{
+        "code":"OCTAVE",
+        "compability":"octave",
+        "language":"octave",
+        "icon":"devicon-devicon-plain",
+        "display":"Octave (octave)",
+        "method":"add"
+    },{
+        "code":"PERL",
+        "compability":"perl",
+        "language":"perl",
+        "icon":"devicon-devicon-plain",
+        "display":"Perl (perl)",
+        "method":"add"
+    },{
+        "code":"PHP",
+        "compability":"php",
+        "language":"php",
+        "icon":"devicon-php-plain",
+        "display":"PHP (php)",
+        "method":"add"
+    },{
+        "code":"PYTHON2",
+        "compability":"python",
+        "language":"python",
+        "icon":"devicon-python-plain",
+        "display":"Python (python 2)",
+        "method":"add"
+    },{
+        "code":"PYTHON3",
+        "compability":"python",
+        "language":"python",
+        "icon":"devicon-python-plain",
+        "display":"Python (python 3)",
+        "method":"add"
+    },{
+        "code":"RKT",
+        "compability":"racket",
+        "language":"racket",
+        "icon":"devicon-devicon-plain",
+        "display":"Racket (racket)",
+        "method":"add"
+    },{
+        "code":"RLANG",
+        "compability":"r",
+        "language":"r",
+        "icon":"devicon-devicon-plain",
+        "display":"R (R)",
+        "method":"add"
+    },{
+        "code":"RUBY",
+        "compability":"ruby",
+        "language":"ruby",
+        "icon":"devicon-ruby-plain",
+        "display":"Ruby (ruby)",
+        "method":"add"
+    },{
+        "code":"SWIFT",
+        "compability":"swift",
+        "language":"swift",
+        "icon":"devicon-swift-plain",
+        "display":"Swift (swiftc)",
+        "method":"add"
+    },{
+        "code":"VALAC",
+        "compability":"vala",
+        "language":"vala",
+        "icon":"devicon-devicon-plain",
+        "display":"Vala (valac)",
+        "method":"add"
+    },{
+        "code":"VBNC",
+        "compability":"basic",
+        "language":"vb",
+        "icon":"devicon-devicon-plain",
+        "display":"Visual Basic (vbnc)",
+        "method":"add"
+    }]
+}

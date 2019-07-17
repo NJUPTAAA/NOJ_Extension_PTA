@@ -1,11 +1,11 @@
 {
-    "name":"Template",
-    "code":"template",
-    "icon":"resources/template@2x.png",
+    "name":"PTA",
+    "code":"pta",
+    "icon":"resources/pta@2x.png",
     "type":"virtual-judge",
-    "description": "Template of Interface for NOJ",
+    "description": "PTA interface for NOJ",
     "license": "MIT",
-    "repository":"https://github.com/NJUPTAAA/NOJ_Extensions_Template",
+    "repository":"https://github.com/NJUPTAAA/NOJ_Extension_PTA",
     "version":"0.0.1",
     "website":"https://acm.njupt.edu.cn/",
     "provider":{
