@@ -13,7 +13,6 @@ class Crawler extends CrawlerBase
     public $oid = null;
     public $prefix = "PTA";
     private $con;
-    private $imgi;
     /**
      * Initial
      *
@@ -33,7 +32,7 @@ class Crawler extends CrawlerBase
         if ($action == 'judge_level') {
             $this->judge_level();
         } else {
-            $this->crawl($con);
+            $this->crawl($con, $action == 'update_problem');
         }
     }
 
@@ -42,7 +41,7 @@ class Crawler extends CrawlerBase
         // TODO
     }
 
-    public function crawl($con)
+    public function crawl($con, $incremental)
     {
         $start = time();
         if ($conType == 'all') {
@@ -59,7 +58,6 @@ class Crawler extends CrawlerBase
 
         foreach ($conList as $con) {
             $this->con = $con;
-            $this->imgi = 1;
             $problemModel = new ProblemModel();
             $res = Requests::get("https://pintia.cn/api/problem-sets/$con/exams", [
                 "Accept" => "application/json;charset=UTF-8",
@@ -98,6 +96,9 @@ class Crawler extends CrawlerBase
             $now = time() - $start;
 
             foreach ($probLists as $prob) {
+                if ($incremental && !empty($problemModel->basic($problemModel->pid('PTA' . $prob['id'])))) {
+                    continue;
+                }
                 $probDetails = json_decode(Requests::get(
                     "https://pintia.cn/api/problem-sets/$con/problems/{$prob["id"]}",
                     [
