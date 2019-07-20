@@ -2,6 +2,7 @@
 namespace App\Babel\Extension\pta;
 
 use App\Babel\Crawl\CrawlerBase;
+use App\Models\CompilerModel;
 use App\Models\ProblemModel;
 use App\Models\OJModel;
 use KubAT\PhpSimple\HtmlDomParser;
@@ -43,8 +44,7 @@ class Crawler extends CrawlerBase
 
     public function crawl($con, $incremental)
     {
-        $start = time();
-        if ($conType == 'all') {
+        if ($con == 'all') {
             // Here is the script
             //
             // var a="";
@@ -56,49 +56,51 @@ class Crawler extends CrawlerBase
             $conList = [intval($conType)];
         }
 
+        $problemModel = new ProblemModel();
+        $updmsg = $incremental ? 'Updating' : 'Crawling';
+        $donemsg = $incremental ? 'Updated' : 'Crawled';
         foreach ($conList as $con) {
             $this->con = $con;
-            $problemModel = new ProblemModel();
+
+            $this->line("<fg=yellow>{$updmsg} exam: </>$con");
+
             $res = Requests::get("https://pintia.cn/api/problem-sets/$con/exams", [
                 "Accept" => "application/json;charset=UTF-8",
                 "Content-Type" => "application/json"
             ]);
 
             if (strpos($res->body, 'PROBLEM_SET_NOT_FOUND') !== false) {
-                header('HTTP/1.1 404 Not Found');
-                die();
-            } else {
-                $generalDetails = json_decode($res->body, true);
-                $compilerModel = new CompilerModel();
-                $list = $compilerModel->list($this->oid);
-                $compilers = [];
-                foreach ($generalDetails['problemSet']['problemSetConfig']['compilers'] as $lcode) {
-                    foreach ($list as $compiler) {
-                        if ($compiler['lcode'] == $lcode) {
-                            array_push($compilers, $compiler['coid']);
-                            break;
-                        }
+                $this->line("\n  <bg=red;fg=white> Exception </> : <fg=yellow>Failed fetching exam info.</>\n");
+                continue;
+            }
+            $generalDetails = json_decode($res->body, true);
+            $compilerModel = new CompilerModel();
+            $list = $compilerModel->list($this->oid);
+            $compilers = [];
+            foreach ($generalDetails['problemSet']['problemSetConfig']['compilers'] as $lcode) {
+                foreach ($list as $compiler) {
+                    if ($compiler['lcode'] == $lcode) {
+                        array_push($compilers, $compiler['coid']);
+                        break;
                     }
                 }
-                $this->pro['special_compiler'] = join(',', $compilers);
             }
-
-            $now = time() - $start;
+            $this->pro['special_compiler'] = join(',', $compilers);
 
             $probLists = json_decode(Requests::get(
-                "https://pintia.cn/api/problem-sets/$con/problems?type=PROGRAMMING&exam_id=0",
+                "https://pintia.cn/api/problem-sets/$con/problem-list?problem_type=PROGRAMMING",
                 [
                     "Accept" => "application/json;charset=UTF-8",
                     "Content-Type" => "application/json"
                 ]
             )->body, true)["problemSetProblems"];
 
-            $now = time() - $start;
-
             foreach ($probLists as $prob) {
                 if ($incremental && !empty($problemModel->basic($problemModel->pid('PTA' . $prob['id'])))) {
                     continue;
                 }
+                $this->line("<fg=yellow>{$updmsg}:   </>PTA$prob[id]");
+
                 $probDetails = json_decode(Requests::get(
                     "https://pintia.cn/api/problem-sets/$con/problems/{$prob["id"]}",
                     [
@@ -106,8 +108,6 @@ class Crawler extends CrawlerBase
                         "Content-Type" => "application/json"
                     ]
                 )->body, true)["problemSetProblem"];
-
-                $now = time() - $start;
 
                 $this->pro['pcode'] = 'PTA' . $prob["id"];
                 $this->pro['OJ'] = $this->oid;
@@ -141,12 +141,14 @@ class Crawler extends CrawlerBase
                     $new_pid = $this->insertProblem($this->oid);
                 }
 
-                $now = time() - $start;
+                $this->line("<fg=green>$donemsg:    </>PTA$prob[id]");
 
                 usleep(400000); // PTA Restrictions 0.5s
 
                 // $problemModel->addTags($new_pid, $tag);
             }
+
+            $this->line("<fg=green>$donemsg exam:  </>$con\n");
         }
     }
 }
