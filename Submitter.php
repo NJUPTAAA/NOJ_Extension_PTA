@@ -75,6 +75,7 @@ class Submitter extends Curl
             'extraHeaders' => ['Accept: application/json;charset=UTF-8'],
             'handle' => $this->selectedJudger['handle'],
         ]);
+        $this->sub['jid'] = $this->selectedJudger['jid'];
         $ret = json_decode($response, true);
         if (isset($ret['submissionId'])) {
             $this->sub['remote_id'] = $ret['submissionId'];
