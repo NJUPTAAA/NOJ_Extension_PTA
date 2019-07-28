@@ -6,7 +6,7 @@
     "description": "PTA interface for NOJ",
     "license": "MIT",
     "repository":"https://github.com/NJUPTAAA/NOJ_Extension_PTA",
-    "version":"0.1.1",
+    "version":"0.1.2",
     "website":"https://pintia.cn/",
     "provider":{
         "judger":"Judger",
